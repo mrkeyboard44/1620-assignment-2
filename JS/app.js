@@ -68,15 +68,22 @@ function createNoteObject(arr) {
     return newObject = { title: arr[0], body: arr[1] }
 }
 
+
+
 function defineSavedNotesSection() {
     html = '\
-    <aside>\
-            <ul class="button" id="column">\
-                <button><a class="active">Untitled Document</a></button>\
-                <button><a>Yesterday</a></button>\
-                <button><a>The day before</a></button>\
-            </ul>\
-        </aside>\
+        <ul class="button" id="column">\
+            <button><a class="active">Untitled Document</a></button>\
+            <button><a>Yesterday</a></button>\
+            <button><a>The day before</a></button>\
+        </ul>\
+        '
+    return html
+}
+
+function defineCloseAsideButton() {
+    html = '\
+        <span onclick="closeSavedNotesSection()" class="button sidebar" id="close"><i class="fas fa-bars"></i></span>\
         '
     return html
 }
@@ -84,14 +91,40 @@ function defineSavedNotesSection() {
 function openSavedNotesSection() {
     const div = document.querySelector('#view-note')
     div.insertAdjacentHTML('beforeend', defineSavedNotesSection())
-    document.querySelectorAll('aside').style.backgroundColor = '#f2e9de'
-    document.querySelectorAll('#view-note').style.backgroundColor = '#f2e9de'
+    document.querySelector('aside').style.backgroundColor = '#f2e9de'
+    document.querySelector('#view-note').style.backgroundColor = '#f2e9de'
     console.log('aside open')
+    const openAsideButton = document.querySelector("#open")
+    openAsideButton.remove()
+    const aside = document.querySelector('aside')
+    aside.insertAdjacentHTML('beforeend', defineCloseAsideButton())
 }
 
-// const btn = document.querySelector('#dark_Theme');
+function defineOpenAsideButton() {
+    html = '\
+        <span onclick="openSavedNotesSection()" class="button sidebar" id"open"><i class="fas fa-bars"></i></span>\
+        '
+    return html
+}
 
-// const current_theme = 'light';
+function closeSavedNotesSection() {
+    const div = document.querySelector('#view-note')
+    div.remove()
+    document.querySelector('aside').style.backgroundColor = '#fffaf3'
+    document.querySelector('#view-note').style.backgroundColor = '#fffaf3'
+    const button = document.querySelector("#close")
+    button.remove()
+    const aside = document.querySelector('aside')
+    aside.insertAdjacentHTML('beforeend', defineOpenAsideButton())
+}
+
+function addNoteToNotesSection() {
+
+}
+
+const btn = document.querySelector('#dark_Theme');
+
+const themeColor = ''
 
 // function theme(element) {
 //     if (current_theme == 'light') {
@@ -118,10 +151,13 @@ function openSavedNotesSection() {
 //     }
 //     return header_bcolor, body_bcolor, body_color
 // }
-// btn.onclick = function() {
-//     document.querySelector('header').style.backgroundColor = '#191724';
-//     document.body.style.backgroundColor = '#1f1d2e';
-//     document.querySelector('footer').style.backgroundColor = '#191724';
-//     document.body.style.color = '#e0def4';
-//     document.querySelectorAll('button > a').style.color = '#9ccfd8';
-// }
+btn.onclick = function() {
+    document.querySelector('header').style.backgroundColor = '#191724';
+    document.body.style.backgroundColor = '#1f1d2e';
+    document.querySelector('footer').style.backgroundColor = '#191724';
+    document.querySelector('aside').style.backgroundColor = '#26233a';
+    document.body.style.color = '#e0def4';
+    // document.querySelectorAll('button > a').style.color = '#9ccfd8';
+    const themeColor = 'dark'
+}
+console.log(themeColor)
