@@ -1,7 +1,7 @@
 body {
     font-family: 'Nunito Sans', sans-serif;
-    background-color: #1f1d2e;
-    color: #e0def4;
+    background-color: #fffaf3;
+    color: #575279;
     margin: 0;
 }
 header {
@@ -9,7 +9,7 @@ header {
     flex-direction: column;
     justify-content: center;
     grid-area: h;
-    background-color: #191724;
+    background-color: #faf4ed;
     font-size: 28px;
     padding-left: 2rem;
 }
@@ -21,7 +21,7 @@ aside {
     flex-direction: column;
     padding: 1rem;
     grid-area: s;
-    background-color: #26233a;
+    background-color: #f2e9de;
 }
 section {
     grid-area: m;
@@ -54,7 +54,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     grid-area: f;
-    background-color: #191724;
+    background-color: #faf4ed;
     padding: 1rem;
     padding-left: 4rem;
 }
@@ -108,7 +108,7 @@ textarea {
 .button a {
     text-decoration: none;
     font-size: 16px;
-    color: #9ccfd8;
+    color: #56949f;
 }
 .button a.active {
     color: #c4a7e7;
@@ -129,10 +129,8 @@ textarea {
     flex-direction: column;
 }
 #add_symbol {
-    padding-top: 0.5rem;
-}
-#add_symbol a {
-    font-size: 50px;
+    padding-top: 1.5rem;
+    font-size: 25px;
 }
 /* #flex_start {
     align-self: flex-start;
