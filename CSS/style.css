@@ -21,7 +21,7 @@ aside {
     flex-direction: column;
     padding: 1rem;
     grid-area: s;
-    background-color: #f2e9de;
+    background-color: #fffaf3;
 }
 section {
     grid-area: m;
@@ -116,9 +116,9 @@ textarea {
 }
 .sidebar {
     grid-area: b;
-    padding-top: 0;
+    padding: 1rem;
 }
-.sidebar a {
+.sidebar i {
     grid-area: b;
     font-size: 30px;
 }

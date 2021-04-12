@@ -55,6 +55,40 @@ function cleanUp() {
     div.remove()
 }
 
+function saveTextArea() {
+    const note = document.querySelector('textarea').value
+    console.log(note)
+    const notearr = note.split('\n\n')
+    notesArray.push(createNoteObject(notearr))
+    document.querySelector('textarea').value = ""
+    console.log(notesArray)
+}
+
+function createNoteObject(arr) {
+    return newObject = { title: arr[0], body: arr[1] }
+}
+
+function defineSavedNotesSection() {
+    html = '\
+    <aside>\
+            <ul class="button" id="column">\
+                <button><a class="active">Untitled Document</a></button>\
+                <button><a>Yesterday</a></button>\
+                <button><a>The day before</a></button>\
+            </ul>\
+        </aside>\
+        '
+    return html
+}
+
+function openSavedNotesSection() {
+    const div = document.querySelector('#view-note')
+    div.insertAdjacentHTML('beforeend', defineSavedNotesSection())
+    document.querySelectorAll('aside').style.backgroundColor = '#f2e9de'
+    document.querySelectorAll('#view-note').style.backgroundColor = '#f2e9de'
+    console.log('aside open')
+}
+
 // const btn = document.querySelector('#dark_Theme');
 
 // const current_theme = 'light';

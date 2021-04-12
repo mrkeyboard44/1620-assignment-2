@@ -13,10 +13,14 @@
     <title>NoteCan</title>
 </head>
 <body>
-    <div class="container" id="index_container">
+    <div class="container">
         <header>
             <h1>Note Canister</h1>
         </header>
+        <aside>
+            <span onclick="openSavedNotesSection()" class="button sidebar"><i class="fas fa-bars"></i></span>
+            <div id="view-note"></div>
+        </aside>
         <section>
             <nav>
                 <ul class="button">
@@ -25,15 +29,13 @@
                     <button class="button"><a>About</a></button>
                 </ul>
             </nav>
-            <button class="button sidebar"><a href="pages/new_page.html">>></a></button>
-            <!-- <i class="fas fa-bars"></i> -->
+            <!-- <button class="button sidebar"><a href="pages/new_page.html">>></a></button> -->
             <article>
                 <span onclick="createContentWritingArea()" class="button" id="add_symbol"><i class="fas fa-plus"></i></span>
-                <div class="create_box">
+                <!-- <div class="create_box">
                     <p>create a new note</p>
-                </div>
+                </div> -->
                 <div id="content"></div>
-                <div id="view-note"></div>
             </article>
         </section>
         <footer>NoteCan ©, Created By: Matthew Dandar</footer>
