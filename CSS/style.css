@@ -122,6 +122,10 @@ textarea {
     grid-area: b;
     font-size: 30px;
 }
+#content {
+    padding: 50px;
+    max-width: 60vw;
+}
 #sidebar_hide {
     align-self: flex-end;
 }
@@ -174,4 +178,20 @@ textarea {
     .sidebar {
         align-self: flex-end;
     }
+}
+[contenteditable] {
+    font-size: 25px;
+    color: #575279;
+}
+
+[contenteditable] > div {
+    font-size: 18px;
+    color: #6e6a86;
+}
+[contenteditable] div:first-child {
+    color: #575279;
+    font-size: 25px;
+}
+[contenteditable]:focus {
+    outline: none;
 }

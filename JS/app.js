@@ -10,8 +10,8 @@ function defineNoteWritingSection() {
     html = '\
     <div id="note-area">\
         <div id="note" contenteditable="true"></div>\
-        <button onclick="saveNote">save</button>\
-        <button onclick="cleanUp">cancel</button>\
+        <button onclick="saveNote()" class="button" id="horizontal"><a>save</a></button>\
+        <button onclick="cleanUp()" class="button" id="horizantal"><a>cancel</a></button>\
     </div>\
     '
     return html
@@ -20,12 +20,44 @@ function defineNoteWritingSection() {
 function createContentWritingArea() {
     const div = document.querySelector('#content')
     div.insertAdjacentHTML('beforeend', defineNoteWritingSection())
+    setCursor()
     console.log('writing area created')
 }
 
-const btn = document.querySelector('#dark_Theme');
+function setCursor() {
+    const div = document.querySelector('#note')
+    div.focus()
+}
 
-const current_theme = 'light';
+function saveNote() {
+    const div = document.querySelector('#note')
+    const title = div.firstChild.textContent
+    const body = convertDivsToString()
+    notesArray.push(createNote(title, body))
+    cleanUp()
+}
+
+function createNote(title, body) {
+    return { title, body }
+}
+
+function convertDivsToString() {
+    let str = ""
+    const divs = [...document.querySelectorAll('[contenteditable] > div:not(:first-child)')]
+    for (const i of divs) {
+        str += '${i.textContent}\n'
+    }
+    return str
+}
+
+function cleanUp() {
+    const div = document.querySelector('#note-area')
+    div.remove()
+}
+
+// const btn = document.querySelector('#dark_Theme');
+
+// const current_theme = 'light';
 
 // function theme(element) {
 //     if (current_theme == 'light') {
@@ -52,10 +84,10 @@ const current_theme = 'light';
 //     }
 //     return header_bcolor, body_bcolor, body_color
 // }
-btn.onclick = function() {
-    document.querySelector('header').style.backgroundColor = '#191724';
-    document.body.style.backgroundColor = '#1f1d2e';
-    document.querySelector('footer').style.backgroundColor = '#191724';
-    document.body.style.color = '#e0def4';
-    document.querySelectorAll('button > a').style.color = '#9ccfd8';
-}
+// btn.onclick = function() {
+//     document.querySelector('header').style.backgroundColor = '#191724';
+//     document.body.style.backgroundColor = '#1f1d2e';
+//     document.querySelector('footer').style.backgroundColor = '#191724';
+//     document.body.style.color = '#e0def4';
+//     document.querySelectorAll('button > a').style.color = '#9ccfd8';
+// }
