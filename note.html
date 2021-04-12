@@ -18,13 +18,13 @@
             <h1>Note Canister</h1>
         </header>
         <aside>
-            <span onclick="openSavedNotesSection()" class="button sidebar" id="open"><i class="fas fa-bars"></i></span>
+            <span onclick="toggleSavedNotesSection()" class="button sidebar" id="open"><i class="fas fa-bars"></i></span>
             <div id="view-note"></div>
         </aside>
         <section>
             <nav>
-                <ul class="button">
-                    <button class="button" id="dark_Theme"><a>Dark Theme</a></button>
+                <ul class="button" id="menu_bar">
+                    <button onclick="toggleTheme()" class="button"><a id="dark_mode">Dark Theme</a></button>
                     <button class="button"><a>Docs</a></button>
                     <button class="button"><a>About</a></button>
                 </ul>
