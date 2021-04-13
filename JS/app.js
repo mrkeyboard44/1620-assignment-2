@@ -7,8 +7,8 @@ function defineNoteWritingSection() {
     <div id="note-area">\
         <div id="note" contenteditable="true"></div>\
         <div id="save-n-cancel">\
-            <button onclick="saveNote()" class="button" id="horizontal"><a>save</a></button>\
-            <button onclick="cleanUp()" class="button" id="horizantal"><a>cancel</a></button>\
+            <button onclick="saveNote()" class="button" id="left_button"><a>save</a></button>\
+            <button onclick="cleanUp()" class="button"><a>cancel</a></button>\
         </div>\
     </div>\
     '
@@ -16,7 +16,7 @@ function defineNoteWritingSection() {
 }
 
 function defineCreateNoteMessage() {
-    html = '<p id="create_message">create a new note</p>'
+    html = '<a id="create_message">create a new note</a>'
     return html
 }
 
@@ -27,6 +27,8 @@ function createContentWritingArea() {
     div.insertAdjacentHTML('beforeend', defineNoteWritingSection())
     setCursor()
     console.log('writing area created')
+    toggleTheme()
+    toggleTheme()
 }
 
 function setCursor() {
@@ -62,6 +64,8 @@ function cleanUp() {
     div.remove()
     const createMessage = document.querySelector('.create_box')
     createMessage.insertAdjacentHTML('beforeend', defineCreateNoteMessage())
+    toggleTheme()
+    toggleTheme()
 }
 
 function saveTextArea() {
@@ -129,7 +133,7 @@ function openSavedNotesSection() {
     i.remove()
     const span = document.querySelector('#aside_toggle')
     span.insertAdjacentHTML('beforeend', closeButton())
-    document.querySelector('.container').style.gridTemplateColumns = '250px 1fr';
+    // document.querySelector('.container').style.gridTemplateColumns = '250px 1fr';
 }
 
 function closeSavedNotesSection() {
@@ -143,7 +147,7 @@ function closeSavedNotesSection() {
     i.remove()
     const span = document.querySelector('#aside_toggle')
     span.insertAdjacentHTML('beforeend', openButton())
-    document.querySelector('.container').style.gridTemplateColumns = '50px 1fr';
+    // document.querySelector('.container').style.gridTemplateColumns = '50px 1fr';
 }
 
 //OPEN SAVED NOTE
@@ -152,7 +156,7 @@ function defineSavedNoteSection() {
     html = '\
     <div id="note-area">\
         <div id="note" contenteditable="false"></div>\
-        <button onclick="cleanUp()" class="button" id="horizantal"><a>close</a></button>\
+        <button onclick="cleanUp()" class="button" id="left_button"><a>close</a></button>\
     </div>\
     '
     return html
@@ -176,12 +180,8 @@ function openNote(index) {
     const noteArea = document.querySelector('#note')
     noteArea.insertAdjacentHTML('beforebegin', defineOpenNoteContent(index))
     console.log('writing area created')
+    applyTheme()
 }
-
-// function openNote(index) {
-    
-// }
-
 
 //DARK AND LIGHT THEME BUTTON
 
@@ -199,14 +199,18 @@ var text_color = '#575279'
 
 var button_color = '#56949f'
 
+var note_heading_color = '#eb6f92'
+
 const darkThemeColors = {
     header_bcolor: '#191724', body_bcolor: '#1f1d2e', footer_bcolor: '#191724',
-    aside_bcolor: '#26233a', text_color: '#e0def4', button_color: '#9ccfd8'
+    aside_bcolor: '#26233a', text_color: '#e0def4', button_color: '#9ccfd8',
+    note_heading_color: '#c4a7e7'
 }
 
 const lightThemeColors = {
     header_bcolor: '#faf4ed', body_bcolor: '#fffaf3', footer_bcolor: '#faf4ed',
-    aside_bcolor: '#f2e9de', text_color: '#575279', button_color: '#56949f'
+    aside_bcolor: '#f2e9de', text_color: '#575279', button_color: '#56949f',
+    note_heading_color: '#907aa9'
 }
 
 function toggleTheme() {
@@ -228,7 +232,7 @@ function darkTheme(theme) {
     aside_bcolor = darkThemeColors.aside_bcolor
     text_color = darkThemeColors.text_color
     button_color = darkThemeColors.button_color
-    // document.querySelectorAll('button').style.color = '#9ccfd8';
+    note_heading_color = darkThemeColors.note_heading_color
     theme.firstChild.nodeValue = 'Light Theme'
     applyTheme()
 }
@@ -241,7 +245,7 @@ function lightTheme(theme) {
     aside_bcolor = lightThemeColors.aside_bcolor
     text_color = lightThemeColors.text_color
     button_color = lightThemeColors.button_color
-    // document.querySelectorAll('button').style.color = '#9ccfd8';
+    note_heading_color = lightThemeColors.note_heading_color
     theme.firstChild.nodeValue = 'Dark Theme'
     applyTheme()
 }
@@ -251,10 +255,30 @@ function applyTheme() {
     document.body.style.backgroundColor = body_bcolor;
     document.querySelector('footer').style.backgroundColor = footer_bcolor;
     document.body.style.color = text_color;
-    document.querySelector('aside').style.color = button_color;
-    document.querySelector('nav').style.color = button_color;
-    console.log(document.querySelector('i').style.color)
-    console.log(document.querySelector('a').style.color)
+    const main_text = document.querySelectorAll('a');
+        main_text.forEach(
+            el => { el.style.color = button_color
+    });
+    const buttons = document.querySelectorAll('i');
+        buttons.forEach(
+            el => { el.style.color = button_color
+    });
+    const open_note_text = document.querySelectorAll('p');
+        open_note_text.forEach(
+            el => { el.style.color = text_color
+    });
+    const create_note_text = document.querySelectorAll('[contenteditable] > div');
+        create_note_text.forEach(
+            el => { el.style.color = text_color
+    });
+    const open_note_heading = document.querySelectorAll('[contenteditable]');
+        open_note_heading.forEach(
+            el => { el.style.color = note_heading_color
+    });
+    const create_note_heading = document.querySelectorAll('h3');
+        create_note_heading.forEach(
+            el => { el.style.color = note_heading_color
+    });
     if (asideStatus == 'closed') {
         document.querySelector('aside').style.backgroundColor = body_bcolor;
     }
