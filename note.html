@@ -18,23 +18,22 @@
             <h1>Note Canister</h1>
         </header>
         <aside>
-            <span onclick="toggleSavedNotesSection()" class="button sidebar" id="open"><i class="fas fa-bars"></i></span>
+            <span onclick="toggleSavedNotesSection()" class="button sidebar" id="aside_toggle"><i class="fas fa-chevron-right" id='open'></i></span>
             <div id="view-note"></div>
         </aside>
         <section>
             <nav>
                 <ul class="button" id="menu_bar">
-                    <button onclick="toggleTheme()" class="button"><a id="dark_mode">Dark Theme</a></button>
+                    <button onclick="toggleTheme()" class="button"><a id="theme_button">Dark Theme</a></button>
                     <button class="button"><a>Docs</a></button>
                     <button class="button"><a>About</a></button>
                 </ul>
             </nav>
-            <!-- <button class="button sidebar"><a href="pages/new_page.html">>></a></button> -->
             <article>
                 <span onclick="createContentWritingArea()" class="button" id="add_symbol"><i class="fas fa-plus"></i></span>
-                <!-- <div class="create_box">
-                    <p>create a new note</p>
-                </div> -->
+                <div class="create_box">
+                    <p id="create_message">create a new note</p>
+                </div>
                 <div id="content"></div>
             </article>
         </section>

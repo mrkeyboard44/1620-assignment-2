@@ -16,6 +16,9 @@ header {
 h1 {
     margin: 0;
 }
+h3 {
+    font-weight: normal;
+}
 aside {
     display: flex;
     flex-direction: column;
@@ -60,7 +63,7 @@ footer {
 }
 p {
     font-family: 'Newsreader', serif;
-    margin: 1rem;
+    margin: 0;
     color: #6e6a86;
 }
 a {
@@ -100,7 +103,7 @@ textarea {
 .create_box p {
     font-family: 'Nunito Sans', sans-serif;
     color: #9ccfd8;
-    margin-top: 1.5rem;
+    margin-top: 50px;
 }
 .button {
     display: flex;
@@ -133,7 +136,7 @@ textarea {
     flex-direction: column;
 }
 #add_symbol {
-    padding-top: 1.5rem;
+    padding-top: 50px;
     font-size: 25px;
 }
 /* #flex_start {
@@ -179,16 +182,16 @@ textarea {
         align-self: flex-end;
     }
 }
-[contenteditable] {
+[contenteditable], h3 {
     font-size: 25px;
     color: #575279;
 }
 
-[contenteditable] > div {
+[contenteditable] > div, p {
     font-size: 18px;
     color: #6e6a86;
 }
-[contenteditable] div:first-child {
+[contenteditable] div:first-child, h3 {
     color: #575279;
     font-size: 25px;
 }
