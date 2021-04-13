@@ -76,6 +76,7 @@ button {
     background: none;
     border: 0;
     padding: 1rem;
+    outline: none;
 }
 textarea {
     background-color: #26233a;
@@ -129,6 +130,9 @@ textarea {
 #content {
     padding: 50px;
     max-width: 60vw;
+}
+#save-n-cancel {
+    display: flex;
 }
 #sidebar_hide {
     align-self: flex-end;
@@ -192,10 +196,10 @@ textarea {
     font-size: 18px;
     color: #6e6a86;
 }
-[contenteditable] div:first-child, h3 {
+/* [contenteditable] div:first-child, h3 {
     color: #575279;
     font-size: 25px;
-}
+} */
 [contenteditable]:focus {
     outline: none;
 }

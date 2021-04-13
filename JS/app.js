@@ -6,8 +6,10 @@ function defineNoteWritingSection() {
     html = '\
     <div id="note-area">\
         <div id="note" contenteditable="true"></div>\
-        <button onclick="saveNote()" class="button" id="horizontal"><a>save</a></button>\
-        <button onclick="cleanUp()" class="button" id="horizantal"><a>cancel</a></button>\
+        <div id="save-n-cancel">\
+            <button onclick="saveNote()" class="button" id="horizontal"><a>save</a></button>\
+            <button onclick="cleanUp()" class="button" id="horizantal"><a>cancel</a></button>\
+        </div>\
     </div>\
     '
     return html
@@ -48,7 +50,7 @@ function createNote(title, body) {
 
 function convertDivsToString() {
     let str = ""
-    const divs = [...document.querySelectorAll('[contenteditable] > div:not(:first-child)')]
+    const divs = [...document.querySelectorAll('[contenteditable] > div')]
     for (const i of divs) {
         str += `${i.textContent}\n`
     }
@@ -158,8 +160,7 @@ function defineSavedNoteSection() {
 
 function defineOpenNoteContent(index) {
     console.log(notesArray[index].body);
-    html =  '\
-        <h3>' + notesArray[index].title + '</h3>\n'
+    html =  '<h3>' + notesArray[index].title + '</h3>\n'
     bodyArray = notesArray[index].body.split("\n")
     for (const i of bodyArray) {
         html += '<p>' + i + '</p>\n'
