@@ -127,6 +127,7 @@ function openSavedNotesSection() {
     i.remove()
     const span = document.querySelector('#aside_toggle')
     span.insertAdjacentHTML('beforeend', closeButton())
+    document.querySelector('.container').style.gridTemplateColumns = '250px 1fr';
 }
 
 function closeSavedNotesSection() {
@@ -140,13 +141,14 @@ function closeSavedNotesSection() {
     i.remove()
     const span = document.querySelector('#aside_toggle')
     span.insertAdjacentHTML('beforeend', openButton())
+    document.querySelector('.container').style.gridTemplateColumns = '50px 1fr';
 }
 
 //OPEN SAVED NOTE
 
 function defineSavedNoteSection() {
     html = '\
-    <div id="note-record">\
+    <div id="note-area">\
         <div id="note" contenteditable="false"></div>\
         <button onclick="cleanUp()" class="button" id="horizantal"><a>close</a></button>\
     </div>\
@@ -157,9 +159,11 @@ function defineSavedNoteSection() {
 function defineOpenNoteContent(index) {
     console.log(notesArray[index].body);
     html =  '\
-        <h3>' + notesArray[index].title + '</h3>\n<p>\
-        ' + notesArray[index].body + '</p>\
-        '
+        <h3>' + notesArray[index].title + '</h3>\n'
+    bodyArray = notesArray[index].body.split("\n")
+    for (const i of bodyArray) {
+        html += '<p>' + i + '</p>\n'
+    }
     return html
 }
 
@@ -168,7 +172,7 @@ function openNote(index) {
     createMessage.remove()
     const div = document.querySelector('#content')
     div.insertAdjacentHTML('beforeend', defineSavedNoteSection())
-    const noteArea = document.querySelector('#note-record')
+    const noteArea = document.querySelector('#note')
     noteArea.insertAdjacentHTML('beforebegin', defineOpenNoteContent(index))
     console.log('writing area created')
 }
@@ -246,8 +250,8 @@ function applyTheme() {
     document.body.style.backgroundColor = body_bcolor;
     document.querySelector('footer').style.backgroundColor = footer_bcolor;
     document.body.style.color = text_color;
-    document.querySelector('i').style.color = button_color;
-    document.querySelector('a').style.color = button_color;
+    document.querySelector('aside').style.color = button_color;
+    document.querySelector('nav').style.color = button_color;
     console.log(document.querySelector('i').style.color)
     console.log(document.querySelector('a').style.color)
     if (asideStatus == 'closed') {

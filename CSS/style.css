@@ -18,6 +18,7 @@ h1 {
 }
 h3 {
     font-weight: normal;
+    margin: 0;
 }
 aside {
     display: flex;
@@ -41,7 +42,7 @@ article {
     align-self: center;
     grid-area: b;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     padding-left: 1rem;
 }
 ul {
@@ -90,7 +91,7 @@ textarea {
 }
 .container {
     display: grid;
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: 50px 1fr;
     grid-template-rows: 125px 1fr;
     grid-template-areas:
         'h h'
@@ -102,8 +103,8 @@ textarea {
 }
 .create_box p {
     font-family: 'Nunito Sans', sans-serif;
-    color: #9ccfd8;
-    margin-top: 50px;
+    color: #56949f;
+    margin: 50px;
 }
 .button {
     display: flex;
